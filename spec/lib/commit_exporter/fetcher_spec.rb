@@ -1,4 +1,4 @@
 module CommitExporter
-  describe CSVExporter do
+  describe Fetcher do
   end
 end

@@ -1,4 +1,4 @@
 module CommitExporter
-  class CSVExporter
+  describe Exporter do
   end
 end
