@@ -9,12 +9,18 @@ module CommitExporter
           stub_request(:get, 'https://api.github.com/repos/octocat/Hello-World/stats/contributors')
             .with(query: { access_token: 'abc' })
             .to_return(body: open('./spec/fixtures/contributors.json').read)
+
+          stub_request(:get, 'https://api.github.com/users/octocat')
+            .with(query: { access_token: 'abc' })
+            .to_return(body: open('./spec/fixtures/user.json').read)
         end
 
         it 'returns contributors of given repository' do
           expect(github.contributors('octocat/Hello-World')).to eq [
             Contributor.new(
               login: 'octocat',
+              name: 'monalisa octocat',
+              email: 'octocat@github.com',
               avatar_url: 'https://github.com/images/error/octocat_happy.gif',
               commits_count: 135
             )

@@ -5,6 +5,8 @@ require 'json'
 module CommitExporter
   module Provider
     class Github
+      API_HOST = 'https://api.github.com'.freeze
+
       attr_accessor :access_token
 
       def initialize(access_token:)
@@ -12,23 +14,16 @@ module CommitExporter
       end
 
       def contributors(repository)
-        parse fetch(repository)
+        fetch_users fetch_contributors(repository)
       end
 
       private
 
-      def fetch(repository)
-        uri = URI("https://api.github.com/repos/#{repository}/stats/contributors")
-        uri.query = URI.encode_www_form(access_token: access_token)
-        request = Net::HTTP::Get.new(uri)
-        response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-          http.request(request)
-        end
-        response.body
+      def fetch_contributors(repository)
+        parse_contributors get("repos/#{repository}/stats/contributors")
       end
 
-      def parse(data)
-        data = JSON.parse(data)
+      def parse_contributors(data)
         data.map do |contributor_data|
           Contributor.new(
             login: contributor_data['author']['login'],
@@ -36,6 +31,24 @@ module CommitExporter
             commits_count: contributor_data['total']
           )
         end
+      end
+
+      def fetch_users(contributors)
+        contributors.each do |contributor|
+          user_data = get("users/#{contributor.login}")
+          contributor.name = user_data['name']
+          contributor.email = user_data['email']
+        end
+      end
+
+      def get(path)
+        uri = URI("#{API_HOST}/#{path}")
+        uri.query = URI.encode_www_form(access_token: access_token)
+        request = Net::HTTP::Get.new(uri)
+        response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+          http.request(request)
+        end
+        JSON.parse(response.body)
       end
     end
   end

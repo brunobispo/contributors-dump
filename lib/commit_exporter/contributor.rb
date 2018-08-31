@@ -1,9 +1,11 @@
 module CommitExporter
   class Contributor
-    attr_accessor :login, :avatar_url, :commits_count
+    attr_accessor :login, :name, :email, :avatar_url, :commits_count
 
-    def initialize(login: nil, avatar_url: nil, commits_count: nil)
+    def initialize(login: nil, name: nil, email: nil, avatar_url: nil, commits_count: nil)
       @login = login
+      @name = name
+      @email = email
       @avatar_url = avatar_url
       @commits_count = commits_count
     end
