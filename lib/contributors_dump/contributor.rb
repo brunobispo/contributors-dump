@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   class Contributor
     attr_accessor :login, :name, :email, :avatar_url, :commits_count
 

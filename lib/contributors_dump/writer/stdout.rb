@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   module Writer
     class Stdout
       def call(data, _target)

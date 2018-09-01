@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/contributors_dump'
+
+ContributorsDump::CLI.from_arguments.call

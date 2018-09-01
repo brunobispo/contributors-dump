@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   module Writer
     describe Stdout do
       let(:writer) { subject }

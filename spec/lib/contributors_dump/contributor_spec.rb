@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   describe Contributor do
     let(:github) { subject }
 

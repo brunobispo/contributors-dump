@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-module CommitExporter
+module ContributorsDump
   module Provider
     class Github
       API_HOST = 'https://api.github.com'.freeze

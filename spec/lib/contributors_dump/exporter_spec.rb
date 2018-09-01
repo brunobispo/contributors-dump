@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   describe Exporter do
     describe '#call' do
       subject do

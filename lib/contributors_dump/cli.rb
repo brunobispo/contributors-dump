@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   class CLI
     attr_accessor :formatter, :provider, :writer, :repository, :target
 

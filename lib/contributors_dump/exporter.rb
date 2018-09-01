@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   class Exporter
     attr_accessor :formatter, :provider, :writer, :sorter
 

@@ -1,6 +1,6 @@
 require 'tmpdir'
 
-module CommitExporter
+module ContributorsDump
   module Writer
     describe File do
       let(:writer) { subject }

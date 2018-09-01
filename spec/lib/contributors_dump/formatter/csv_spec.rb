@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   module Formatter
     describe CSV do
       let(:csv) { subject }
@@ -20,7 +20,7 @@ module CommitExporter
                         commits_count: 5
       end
 
-      describe '#render' do
+      describe '#call' do
         it 'returns a csv formatted string' do
           output = csv.call([contributor_1, contributor_2])
           expect(output).to eq <<-csv.gsub("\s", '')

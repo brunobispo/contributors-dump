@@ -1,2 +1,2 @@
 --require ./spec/spec_helper
---require ./lib/commit_exporter
+--require ./lib/contributors_dump

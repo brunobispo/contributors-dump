@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   describe CLI do
     let(:cli) { subject } 
 

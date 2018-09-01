@@ -1,6 +1,6 @@
 require 'csv'
 
-module CommitExporter
+module ContributorsDump
   module Formatter
     class CSV
       def call(contributors)

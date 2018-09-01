@@ -1,8 +1,0 @@
-require_relative 'commit_exporter/contributor'
-require_relative 'commit_exporter/exporter'
-require_relative 'commit_exporter/provider/github'
-require_relative 'commit_exporter/formatter/csv'
-require_relative 'commit_exporter/writer/file'
-require_relative 'commit_exporter/writer/stdout'
-require_relative 'commit_exporter/sorter'
-require_relative 'commit_exporter/cli'

@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   module Writer
     class File
       def call(data, filename)

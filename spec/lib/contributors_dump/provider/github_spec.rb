@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   module Provider
     describe Github do
       subject { described_class.new }

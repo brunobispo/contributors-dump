@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   describe Sorter do
     let(:sorter) { subject }
 

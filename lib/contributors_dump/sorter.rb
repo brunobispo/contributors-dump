@@ -1,4 +1,4 @@
-module CommitExporter
+module ContributorsDump
   class Sorter
     def call(contributors)
       contributors.sort { |contributor| contributor.commits_count }
