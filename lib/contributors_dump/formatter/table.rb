@@ -38,7 +38,7 @@ module ContributorsDump
           COLUMNS.map { |(name, label)| [name, label.size] }.to_h
         ) do |contributor, hash|
           hash.each do |name, size|
-            hash[name] = [size, contributor.send(name).size].max
+            hash[name] = [size, contributor.send(name)&.size].compact.max
           end
         end
       end

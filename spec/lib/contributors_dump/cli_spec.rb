@@ -34,10 +34,6 @@ module ContributorsDump
         it 'sets writer as file' do
           expect(cli.writer).to be_a Writer::File
         end
-
-        it 'sets formatter as csv' do
-          expect(cli.formatter).to be_a Formatter::CSV
-        end
       end
 
       describe 'when no target is given' do
@@ -47,10 +43,6 @@ module ContributorsDump
 
         it 'sets writer as stdout' do
           expect(cli.writer).to be_a Writer::Stdout
-        end
-
-        it 'sets formatter as table' do
-          expect(cli.formatter).to be_a Formatter::Table
         end
       end
     end
