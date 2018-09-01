@@ -31,8 +31,12 @@ module ContributorsDump
           stub_const('ARGV', %w[brunobispo/dotfiles output.csv])
         end
 
-        it 'parses the writer' do
+        it 'sets writer as file' do
           expect(cli.writer).to be_a Writer::File
+        end
+
+        it 'sets formatter as csv' do
+          expect(cli.formatter).to be_a Formatter::CSV
         end
       end
 
@@ -41,8 +45,12 @@ module ContributorsDump
           stub_const('ARGV', %w[brunobispo/dotfiles])
         end
 
-        it 'parses the writer' do
+        it 'sets writer as stdout' do
           expect(cli.writer).to be_a Writer::Stdout
+        end
+
+        it 'sets formatter as table' do
+          expect(cli.formatter).to be_a Formatter::Table
         end
       end
     end

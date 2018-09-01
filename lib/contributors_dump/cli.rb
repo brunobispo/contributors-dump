@@ -16,7 +16,13 @@ module ContributorsDump
       end
       instance.repository, instance.target = positional_arguments 
 
-      instance.writer = instance.target ? Writer::File.new : Writer::Stdout.new
+      if instance.target
+        instance.formatter ||= Formatter::CSV.new
+        instance.writer = Writer::File.new
+      else
+        instance.formatter ||= Formatter::Table.new
+        instance.writer = Writer::Stdout.new
+      end
 
       instance
     end
