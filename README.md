@@ -10,6 +10,9 @@ Visualize and export contributors of github repositories.
 ### Installation
 Run `bundle` to install ruby gem dependencies.
 
+### Running tests
+Run `rspec` to run test suite
+
 ### Usage
 
     $ bin/contributors-dump [-f CVS|Table] <repository> <file>
