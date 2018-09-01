@@ -19,6 +19,7 @@ Run `rspec` to run test suite
 
 To visualize the report as a table:
 
+    $ export GITHUB_ACCESS_TOKEN=<YOUR_ACCESS_TOKEN>
     $ bin/contributors-dump "brunobispo/dotfiles"
     +-------------+-------------------+------------+-----------------------------------------------------+----------+
     | Name        | Email             | Login      | Avatar                                              | Commits  |
