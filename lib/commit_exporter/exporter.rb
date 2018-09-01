@@ -1,7 +1,11 @@
+require 'tmpdir'
+
 module CommitExporter
   class Exporter
-    attr_accessor :format
-
-    # delegate :export, to: :format
+    def write(data, filename)
+      open(filename, 'w') do |file|
+        file.write data
+      end
+    end
   end
 end

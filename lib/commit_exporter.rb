@@ -1,3 +1,5 @@
+require_relative 'commit_exporter/contributor'
 require_relative 'commit_exporter/exporter'
 require_relative 'commit_exporter/fetcher'
-require_relative 'commit_exporter/contributor'
+require_relative 'commit_exporter/provider/github'
+require_relative 'commit_exporter/formatter/csv'
