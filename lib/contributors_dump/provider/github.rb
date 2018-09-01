@@ -7,6 +7,12 @@ module ContributorsDump
     class Github
       API_HOST = 'https://api.github.com'.freeze
 
+      attr_accessor :access_token
+
+      def initialize(access_token: nil)
+        @access_token = access_token || ENV['GITHUB_ACCESS_TOKEN']
+      end
+
       def call(repository)
         fetch_users fetch_contributors(repository)
       end
@@ -37,6 +43,7 @@ module ContributorsDump
 
       def get(path)
         uri = URI("#{API_HOST}/#{path}")
+        uri.query = URI.encode_www_form(access_token: access_token)
         request = Net::HTTP::Get.new(uri)
         response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
           http.request(request)
