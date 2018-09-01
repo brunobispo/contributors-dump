@@ -25,6 +25,26 @@ module CommitExporter
       it 'parses the target' do
         expect(cli.target).to eq 'output.csv'
       end
+
+      describe 'when a target is given' do
+        before do
+          stub_const('ARGV', %w[brunobispo/dotfiles output.csv])
+        end
+
+        it 'parses the writer' do
+          expect(cli.writer).to be_a Writer::File
+        end
+      end
+
+      describe 'when no target is given' do
+        before do
+          stub_const('ARGV', %w[brunobispo/dotfiles])
+        end
+
+        it 'parses the writer' do
+          expect(cli.writer).to be_a Writer::Stdout
+        end
+      end
     end
 
     describe '.call' do
@@ -39,7 +59,8 @@ module CommitExporter
 
         expect(Exporter).to have_received(:new).with(
           formatter: cli.formatter,
-          provider: cli.provider
+          provider: cli.provider,
+          writer: cli.writer
         )
       end
 

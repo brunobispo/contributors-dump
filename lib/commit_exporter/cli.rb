@@ -1,6 +1,6 @@
 module CommitExporter
   class CLI
-    attr_accessor :formatter, :provider, :repository, :target
+    attr_accessor :formatter, :provider, :writer, :repository, :target
 
     def self.from_arguments
       instance = new
@@ -16,13 +16,16 @@ module CommitExporter
       end
       instance.repository, instance.target = positional_arguments 
 
+      instance.writer = instance.target ? Writer::File.new : Writer::Stdout.new
+
       instance
     end
 
     def call
       Exporter.new(
         formatter: formatter,
-        provider: provider
+        provider: provider,
+        writer: writer
       ).call(repository, target)
     end
 
