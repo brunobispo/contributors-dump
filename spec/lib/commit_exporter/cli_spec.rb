@@ -7,7 +7,6 @@ module CommitExporter
 
       before do
         stub_const('ARGV', %w[-f CSV -p Github brunobispo/dotfiles output.csv])
-        stub_const('ENV', PROVIDER_ACCESS_TOKEN: 'abc')
       end
 
       it 'parses the format' do
