@@ -10,12 +10,14 @@ module CommitExporter
       @commits_count = commits_count
     end
 
-    def attributes
-      instance_variables.map { |variable| instance_variable_get variable }
-    end
-
     def ==(other)
       attributes == other.attributes
+    end
+
+    protected
+
+    def attributes
+      instance_variables.map { |variable| instance_variable_get variable }
     end
   end
 end

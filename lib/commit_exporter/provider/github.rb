@@ -9,11 +9,11 @@ module CommitExporter
 
       attr_accessor :access_token
 
-      def initialize(access_token:)
-        @access_token = access_token
+      def initialize(access_token: nil)
+        @access_token = access_token || ENV['GITHUB_ACCESS_TOKEN']
       end
 
-      def contributors(repository)
+      def call(repository)
         fetch_users fetch_contributors(repository)
       end
 

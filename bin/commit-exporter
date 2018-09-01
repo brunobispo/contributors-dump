@@ -1,14 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'commit_exporer'
+require_relative '../lib/commit_exporter'
 
-repository, filename, github_access_token = ARGV
-
-exporter = CommitExporter.new respository: repository,
-                              access_token: github_access_token
-
-begin
-  exporter.export(filename)
-rescue Exception => e
-  print "Error: #{e.message}"
-end
+CommitExporter::CLI.from_arguments.call

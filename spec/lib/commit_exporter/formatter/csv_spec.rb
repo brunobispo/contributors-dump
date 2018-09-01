@@ -22,7 +22,7 @@ module CommitExporter
 
       describe '#render' do
         it 'returns a csv formatted string' do
-          output = csv.render([contributor_1, contributor_2])
+          output = csv.call([contributor_1, contributor_2])
           expect(output).to eq <<-csv.gsub("\s", '')
             Foo;foo@bar.com;foo;http://goog.com;3
             Bar;bar@foo.com;bar;http://goog.net;5

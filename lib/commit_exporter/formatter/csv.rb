@@ -3,7 +3,7 @@ require 'csv'
 module CommitExporter
   module Formatter
     class CSV
-      def render(contributors)
+      def call(contributors)
         ::CSV.generate(col_sep: ';') do |csv|
           contributors.each do |contributor|
             csv << [
